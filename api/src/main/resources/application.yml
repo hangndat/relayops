@@ -1,0 +1,49 @@
+spring:
+  application:
+    name: relayops-api
+  datasource:
+    url: ${RELAYOPS_DB_URL:jdbc:postgresql://127.0.0.1:5432/relayops}
+    username: ${RELAYOPS_DB_USER:${USER}}
+    password: ${RELAYOPS_DB_PASSWORD:}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+  data:
+    redis:
+      host: ${RELAYOPS_REDIS_HOST:127.0.0.1}
+      port: ${RELAYOPS_REDIS_PORT:6379}
+  flyway:
+    enabled: true
+
+server:
+  port: ${RELAYOPS_PORT:8080}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: when_authorized
+
+relayops:
+  bootstrap-api-key: ${RELAYOPS_BOOTSTRAP_API_KEY:dev-bootstrap-key-change-me}
+  delivery:
+    queue-key: relayops:delivery:queue
+    max-attempts: 5
+    initial-backoff-ms: 500
+    max-backoff-ms: 30000
+    http-timeout-ms: 2000
+    poll-interval-ms: 250
+  worker:
+    enabled: ${RELAYOPS_WORKER_ENABLED:true}
+
+logging:
+  level:
+    com.relayops: INFO

@@ -1,0 +1,61 @@
+:root {
+  --bg: #0f1419;
+  --panel: #1a2330;
+  --text: #e8eef6;
+  --muted: #9aafc3;
+  --accent: #3dd6c6;
+  --line: #2b3a4d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background:
+    radial-gradient(circle at top left, #1d3a3a 0%, transparent 40%),
+    linear-gradient(160deg, #0f1419, #152033 55%, #101820);
+  color: var(--text);
+  font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+}
+
+main {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem 6rem;
+}
+
+h1 {
+  font-family: "IBM Plex Serif", Georgia, serif;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  letter-spacing: -0.03em;
+  margin: 0 0 0.5rem;
+}
+
+p {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.panel {
+  margin-top: 2rem;
+  padding: 1.25rem 1.5rem;
+  background: color-mix(in srgb, var(--panel) 92%, black);
+  border: 1px solid var(--line);
+}
+
+.status {
+  display: inline-flex;
+  gap: 0.5rem;
+  align-items: center;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+code {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  color: var(--text);
+}

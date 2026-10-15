@@ -1,0 +1,23 @@
+# OS / IDE
+.DS_Store
+.idea/
+*.iml
+.vscode/
+
+# Java
+api/target/
+api/.mvn/wrapper/maven-wrapper.jar
+
+# Node
+web/node_modules/
+web/.next/
+web/out/
+web/coverage/
+
+# Env
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log

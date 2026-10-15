@@ -4,7 +4,9 @@
   --text: #e8eef6;
   --muted: #9aafc3;
   --accent: #3dd6c6;
+  --danger: #ff7b72;
   --line: #2b3a4d;
+  --ok: #7ee787;
 }
 
 * {
@@ -22,17 +24,40 @@ body {
   font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
 }
 
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
 main {
-  max-width: 880px;
+  max-width: 980px;
   margin: 0 auto;
-  padding: 4rem 1.5rem 6rem;
+  padding: 2.5rem 1.25rem 5rem;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--line);
 }
 
 h1 {
   font-family: "IBM Plex Serif", Georgia, serif;
-  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-size: clamp(2rem, 5vw, 3rem);
   letter-spacing: -0.03em;
   margin: 0 0 0.5rem;
+}
+
+h2 {
+  font-size: 1.15rem;
+  margin: 0 0 0.75rem;
 }
 
 p {
@@ -41,21 +66,89 @@ p {
 }
 
 .panel {
-  margin-top: 2rem;
-  padding: 1.25rem 1.5rem;
+  margin-top: 1.25rem;
+  padding: 1.1rem 1.25rem;
   background: color-mix(in srgb, var(--panel) 92%, black);
   border: 1px solid var(--line);
 }
 
-.status {
-  display: inline-flex;
-  gap: 0.5rem;
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
   align-items: center;
-  color: var(--accent);
+}
+
+input,
+button,
+select {
+  font: inherit;
+  border-radius: 0;
+  border: 1px solid var(--line);
+  background: #101820;
+  color: var(--text);
+  padding: 0.55rem 0.75rem;
+}
+
+button {
+  background: var(--accent);
+  color: #06221f;
+  border-color: transparent;
   font-weight: 600;
+  cursor: pointer;
+}
+
+button.secondary {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--line);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 0.65rem 0.4rem;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+th {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.15rem 0.45rem;
+  border: 1px solid var(--line);
+  font-size: 0.78rem;
+}
+
+.badge.ok {
+  color: var(--ok);
+  border-color: color-mix(in srgb, var(--ok) 50%, var(--line));
+}
+
+.badge.bad {
+  color: var(--danger);
+  border-color: color-mix(in srgb, var(--danger) 50%, var(--line));
+}
+
+.error {
+  color: var(--danger);
 }
 
 code {
   font-family: "IBM Plex Mono", ui-monospace, monospace;
-  color: var(--text);
 }

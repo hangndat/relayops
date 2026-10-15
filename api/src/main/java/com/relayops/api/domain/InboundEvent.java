@@ -126,6 +126,14 @@ public class InboundEvent {
     this.updatedAt = at;
   }
 
+  public void prepareReplay(Instant at) {
+    // Keep attemptCount so delivery_attempts (event_id, attempt_number) stays unique.
+    this.status = DeliveryStatus.QUEUED;
+    this.nextAttemptAt = at;
+    this.lastError = null;
+    this.updatedAt = at;
+  }
+
   public void markDelivering(Instant at) {
     this.status = DeliveryStatus.DELIVERING;
     this.updatedAt = at;

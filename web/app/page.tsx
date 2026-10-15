@@ -1,8 +1,9 @@
+import { Shell } from "@/components/shell";
+import { ApiKeyForm } from "@/components/api-key-form";
+
 async function fetchHealth(baseUrl: string) {
   try {
-    const response = await fetch(`${baseUrl}/actuator/health`, {
-      cache: "no-store",
-    });
+    const response = await fetch(`${baseUrl}/actuator/health`, { cache: "no-store" });
     if (!response.ok) {
       return { status: "down", detail: `HTTP ${response.status}` };
     }
@@ -21,26 +22,20 @@ export default async function HomePage() {
   const health = await fetchHealth(apiBase);
 
   return (
-    <main>
-      <h1>RelayOps</h1>
+    <Shell title="RelayOps">
       <p>
-        Day 04 reliability core: signed ingest, idempotent accept path, async
-        delivery with retry/backoff.
+        Operations console for at-least-once webhook delivery: inspect history,
+        open the DLQ, and replay terminal failures.
       </p>
-
       <section className="panel">
-        <p className="status">
-          API health: <code>{health.status}</code>
+        <p>
+          API health: <code>{health.status}</code> — {health.detail}
         </p>
         <p>
-          Target: <code>{apiBase}</code> — {health.detail}
-        </p>
-        <p>
-          Use the API to bootstrap a client, register destinations, and inspect
-          `/v1/events/{"{id}"}` for attempt history. Full operations UI lands on
-          Day 05.
+          Target: <code>{apiBase}</code>
         </p>
       </section>
-    </main>
+      <ApiKeyForm />
+    </Shell>
   );
 }

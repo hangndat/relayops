@@ -82,4 +82,8 @@ public class Destination {
   public Instant getCreatedAt() {
     return createdAt;
   }
+
+  public void rotateSigningSecret(String signingSecret) {
+    this.signingSecret = signingSecret;
+  }
 }

@@ -6,6 +6,7 @@ import com.relayops.api.repo.DestinationRepository;
 import com.relayops.api.security.AuthContext;
 import com.relayops.api.web.dto.CreateDestinationRequest;
 import com.relayops.api.web.dto.DestinationResponse;
+import com.relayops.api.web.dto.RotateSecretRequest;
 import java.time.Instant;
 import java.util.List;
 import java.util.UUID;
@@ -43,6 +44,17 @@ public class DestinationService {
     return destinationRepository.findByApiClientIdOrderByCreatedAtDesc(client.getId()).stream()
         .map(this::toResponse)
         .toList();
+  }
+
+  @Transactional
+  public DestinationResponse rotateSecret(UUID destinationId, RotateSecretRequest request) {
+    ApiClient client = AuthContext.require();
+    Destination destination =
+        destinationRepository
+            .findByIdAndApiClientId(destinationId, client.getId())
+            .orElseThrow(() -> new IllegalArgumentException("Destination not found"));
+    destination.rotateSigningSecret(request.signingSecret());
+    return toResponse(destination);
   }
 
   private DestinationResponse toResponse(Destination destination) {

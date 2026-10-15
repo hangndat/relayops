@@ -58,6 +58,8 @@ class DeliveryFlowIntegrationTest {
     registry.add("spring.data.redis.host", () -> "127.0.0.1");
     registry.add("spring.data.redis.port", () -> "6379");
     registry.add("relayops.bootstrap-api-key", () -> "test-bootstrap");
+    registry.add("relayops.delivery.queue-key", () -> "relayops:test:delivery:happy");
+    registry.add("relayops.delivery.max-attempts", () -> "5");
     registry.add("relayops.delivery.initial-backoff-ms", () -> "100");
     registry.add("relayops.delivery.max-backoff-ms", () -> "200");
     registry.add("relayops.delivery.http-timeout-ms", () -> "1000");

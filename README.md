@@ -77,4 +77,14 @@ cd api
 
 ## Status
 
-Day 04 foundation complete locally. Day 05 will add operations UI (history/replay/DLQ views), richer auth, deploy, and demo recording.
+Days 04–05 complete locally: reliability core + operations console (history/DLQ/replay/secret rotate), tests, and case study. Demo video and hosted API URL remain follow-ups.
+
+## Operator console
+
+```bash
+cd web
+npm install
+npm run dev
+```
+
+Routes: `/events`, `/dlq`, `/settings`. Store a bootstrap-issued API key in the console to call the API.

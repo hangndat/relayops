@@ -34,6 +34,8 @@ management:
 
 relayops:
   bootstrap-api-key: ${RELAYOPS_BOOTSTRAP_API_KEY:dev-bootstrap-key-change-me}
+  cors:
+    allowed-origins: ${RELAYOPS_CORS_ORIGINS:http://localhost:3000}
   delivery:
     queue-key: relayops:delivery:queue
     max-attempts: 5

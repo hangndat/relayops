@@ -14,7 +14,8 @@
 | Failure-path + duplicate tests | Done | replay/DLQ + idempotent ingest |
 | Ops UI | Done | Next.js console |
 | Case study + operating docs | Done | `docs/case-study.md`, README |
-| Hosted API deploy | Partial | reproducible local/docker; console can deploy independently |
+| Hosted API deploy | Partial | reproducible local/docker |
+| Ops console deploy | Done | https://relayops-gamma.vercel.app |
 | Demo video | Outstanding | |
 
 ## Verification
